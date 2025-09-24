@@ -8,5 +8,5 @@ for t in range(n):
     for h in range(k):
         a = (t * k) + h
         if b[a] == '1': c += 1
-    if c >= p: s += 1
+    if c > p: s += 1
 print(s)

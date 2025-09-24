@@ -4,9 +4,9 @@ b = input().split()
 
 s = 0
 for t in range(n):
-    c = 0
+    e = 0
     for h in range(k):
         a = (t * k) + h
-        if b[a] == '1': c += 1
-    if c > p: s += 1
+        if b[a] == '0': e += 1
+    if e < p: s += 1
 print(s)

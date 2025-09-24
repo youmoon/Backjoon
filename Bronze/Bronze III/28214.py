@@ -6,6 +6,7 @@ s = 0
 for t in range(n):
     c = 0
     for h in range(k):
-        if b[(t * k) + h] == '1': c += 1
+        a = (t * k) + h
+        if b[a] == '1': c += 1
     if c >= p: s += 1
 print(s)

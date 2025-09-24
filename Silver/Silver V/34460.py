@@ -3,7 +3,6 @@ for t in range(i):
     l, s = int(input()), list(input())
     it = -1
     for r in range(l):
-        print(s[r])
         if s[r] == "M":
             if (it == -1) or (it == 2): it = 0
             else: it = -1; break

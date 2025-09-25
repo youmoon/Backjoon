@@ -13,5 +13,6 @@ for t in range(i):
             if it == 1: it = 2
             else: it = -1; break
         else: it = -1; break
-    if it == 2: print("YES")
+    if l != len(s): print("NO")
+    elif it == 2: print("YES")
     else: print("NO")

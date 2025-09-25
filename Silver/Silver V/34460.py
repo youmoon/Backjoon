@@ -1,6 +1,6 @@
 i = int(input())
 for t in range(i):
-    l, s = int(input()), list(input())
+    l, s = abs(int(input())), list(input())
     it = -1
     for r in range(l):
         if s[r] == "M":

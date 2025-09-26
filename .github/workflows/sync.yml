@@ -1,11 +1,11 @@
-name: 풀이 정보 동기화
+name: 풀이 정보 연동
 
 on:
   schedule:
     - cron: "*/3 * * * *"
 
 jobs:
-  Baekjoon:
+  baekjoon:
     runs-on: ubuntu-latest
 
     steps:

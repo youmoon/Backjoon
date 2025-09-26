@@ -24,4 +24,5 @@ jobs:
           PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           pip install requests
+          pip install beautifulsoup4
           python .github/scripts/baekjoon/update.py

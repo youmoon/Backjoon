@@ -41,7 +41,7 @@ soup = BeautifulSoup(requests.get(URL, headers=HEADERS_BAEKJOON).text, "html.par
 result = {}
 for tr in soup.select("#status-table > tbody > tr"):
     sid = tr["id"].replace("solution-", "")
-    if sid == updated: break
+    if sid == updated: print("b"); break
     tds = tr.find_all("td")
     result[sid] = {
         "problem_id": int(tds[2].find("a")["href"].split("/")[-1]),
@@ -51,7 +51,9 @@ for tr in soup.select("#status-table > tbody > tr"):
         "time": int(tds[5].get_text(strip=True)) if tds[5].get_text(strip=True).isdigit() else None,
         "language": tds[6].find("a").get_text(strip=True)
     }
+print(result)
 result = dict(reversed(result.items()))
+print(result)
 
 # WORK
 for id, data in result.items():

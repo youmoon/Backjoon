@@ -56,7 +56,7 @@ result = dict(reversed(result.items()))
 # WORK
 for id, data in result.items():
     if data["result"] in ["맞았습니다!!", "100점"]: subprocess.run(["python", ".github/scripts/readme/update.py"], check=True)
-    drn = "/" + prlevel(data["problem_id"])[0] + "/" + prlevel(data["problem_id"])[1]
+    drn = "./" + prlevel(data["problem_id"])[0] + "/" + prlevel(data["problem_id"])[1]
     os.makedirs(drn, exist_ok=True)
     fln = drn + "/" + str(data["problem_id"]) + "-" + data["problem_title"].replace("/", "-") + "." + CODE_MAP.get(data["language"], "code")
     with open(fln, 'w', encoding='utf-8') as f: f.write(solve(id))

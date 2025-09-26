@@ -1,34 +1,26 @@
-name: solved.ac 정보 업데이트
+name: 풀이 정보 동기화
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  schedule:
+    - cron: "*/3 * * * *"
 
 jobs:
-  update-readme:
+  Baekjoon:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 저장소 체크아웃
+      - name: 저장소 불러오기
         uses: actions/checkout@v3
 
-      - name: 파이썬 설치
+      - name: 파이썬 준비
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
-      - name: 필요한 모듈 설치
-        run: pip install requests
-
-      - name: 업데이트 코드 실행
-        run: python UPDATE.py
-
-      - name: 변경 사항 업데이트
+      - name: 데이터 동기화
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "UPDATE - solved.ac [skip ci]"
-          git push
+          pip install requests
+          env:
+            COOKIE: ${{ secrets.BAEKJOON_COOKIE }}
+            PAT_TOKEN: ${{  secrets.PAT_TOKEN  }}
+          python .github/scripts/baekjoon/update.py

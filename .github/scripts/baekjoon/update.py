@@ -51,9 +51,8 @@ for tr in soup.select("#status-table > tbody > tr"):
         "time": int(tds[5].get_text(strip=True)) if tds[5].get_text(strip=True).isdigit() else None,
         "language": tds[6].find("a").get_text(strip=True)
     }
-print(result)
-result = dict(reversed(result.items()))
-print(result)
+    print(sid)
+    print(result)
 
 # WORK
 for id, data in result.items():

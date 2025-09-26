@@ -56,19 +56,19 @@ result = dict(reversed(result.items()))
 # WORK
 for id, data in result.items():
     if data["result"] in ["맞았습니다!!", "100점"]: subprocess.run(["python", ".github/scripts/readme/update.py"], check=True)
-    drn = f"/{prlevel(data["problem_id"])[0]}/{prlevel(data["problem_id"])[1]}"
+    drn = "/" + prlevel(data["problem_id"])[0] + "/" + prlevel(data["problem_id"])[1]
     os.makedirs(drn, exist_ok=True)
-    fln = f'{drn}/{data["problem_id"]} - {data["problem_title"].replace("/", "-")}.{CODE_MAP.get(data["language"], "code")}'
+    fln = drn + "/" + str(data["problem_id"]) + "-" + data["problem_title"].replace("/", "-") + "." + CODE_MAP.get(data["language"], "code")
     with open(fln, 'w', encoding='utf-8') as f: f.write(solve(id))
     with open('.github/scripts/baekjoon/update.txt', 'w', encoding='utf-8') as f: f.write(id); f.close()
 
-    cm = f"{data["problem_id"]} - {data["result"]}"
+    cm = str(data["problem_id"]) + "-" + data["result"]
     pat = os.environ["PAT_TOKEN"]
     commands = [
         ["git", "config", "--global", "user.name", "youmoon"],
         ["git", "config", "--global", "user.email", "kimyeomoon@gmail.com"],
         ["git", "add", "."],
-        ["git", "commit", "-m", cm, "-m", f"Memory : {data['memory']}KB", "-m", f"Time : {data['time']}MS"],
+        ["git", "commit", "-m", cm, "-m", "Memory : " + str(data['memory']) + "KB", "-m", "Time : " + str(data['time']) + "MS"],
         ["git", "push", f"https://youmoon:{pat}@github.com/youmoon/Baekjoon.git", "main"]
     ]
     for cmd in commands: subprocess.run(cmd, check=True)

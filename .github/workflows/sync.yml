@@ -3,6 +3,7 @@ name: 풀이 정보 연동
 on:
   schedule:
     - cron: "*/3 * * * *"
+  workflow_dispatch:
 
 jobs:
   baekjoon:

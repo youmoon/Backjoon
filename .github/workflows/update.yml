@@ -18,9 +18,9 @@ jobs:
           python-version: "3.11"
 
       - name: 데이터 동기화
+        env:
+          COOKIE: ${{ secrets.BAEKJOON_COOKIE }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           pip install requests
-          env:
-            COOKIE: ${{ secrets.BAEKJOON_COOKIE }}
-            PAT_TOKEN: ${{  secrets.PAT_TOKEN  }}
           python .github/scripts/baekjoon/update.py

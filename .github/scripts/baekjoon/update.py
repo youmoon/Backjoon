@@ -39,7 +39,7 @@ def solve(id: str): return requests.get(f"https://www.acmicpc.net/source/downloa
 # PROFILE
 soup = BeautifulSoup(requests.get(URL, headers=HEADERS_BAEKJOON).text, "html.parser")
 result = {}
-for tr in soup.select("#status-table > tbody > tr"):
+for tr in soup.select("#status-table > tbody"):
     sid = tr["id"].replace("solution-", "")
     if sid == updated: print("b"); break
     tds = tr.find_all("td")
@@ -51,8 +51,6 @@ for tr in soup.select("#status-table > tbody > tr"):
         "time": int(tds[5].get_text(strip=True)) if tds[5].get_text(strip=True).isdigit() else None,
         "language": tds[6].find("a").get_text(strip=True)
     }
-    print(sid)
-    print(result)
 
 # WORK
 for id, data in result.items():

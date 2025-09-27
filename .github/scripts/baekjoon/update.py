@@ -38,8 +38,9 @@ def solve(id: str): return requests.get(f"https://www.acmicpc.net/source/downloa
 
 # PROFILE
 soup = BeautifulSoup(requests.get(URL, headers=HEADERS_BAEKJOON).text, "html.parser")
+print(requests.get(URL, headers=HEADERS_BAEKJOON).text)
 result = {}
-print(soup.select("#status-table > tbody"))
+print(soup.select("#status-table"))
 for tr in soup.select("#status-table > tbody"):
     sid = tr["id"].replace("solution-", "")
     if sid == updated: print("b"); break
